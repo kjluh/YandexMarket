@@ -36,16 +36,15 @@ public class YMStart extends Chromedriver {
                 By.xpath("//div[@data-zone-name='catalog-content']//ul[@role='tablist']")));
         Actions actions = new Actions(chromeDriver);
         actions.moveToElement(chromeDriver.findElement(By.xpath
-                        ("//div[@data-zone-name='catalog-content']//ul[@role='tablist']//a[contains(.,'" + categoryProduct + "')]")))
+                        ("//ul[@role='tablist']//a[contains(.,'" + categoryProduct + "')]")))
                 .perform();
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
-                ("//div[@data-zone-name='catalog-content']//ul[@role='tablist']//li[@aria-selected='true']" +
-                                "//a[contains(.,'" + categoryProduct + "')]")));
-        webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@role='heading' and @aria-level='2']")));
+                ("//li[@aria-selected='true' and contains(.,'" + categoryProduct + "')]")));
+        webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@data-auto='category']")));
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.xpath("//div[@role='heading']//ul//div[contains(.,'" + nameProduct + "') and @data-zone-name='link']")));
         chromeDriver.findElement(By.xpath("//div[@role='heading']//ul//div[contains(.,'" + nameProduct + "') and @data-zone-name='link']")).click();
-        Assertions.assertTrue(chromeDriver.findElement(By.xpath("//div[@id='/content/page/fancyPage/cms/1']//h1"))
+        Assertions.assertTrue(chromeDriver.findElement(By.xpath("//div[@role='heading' and @aria-level='2']/a"))
                 .getText().contains(nameProduct), "Ноуты не найдены");
     }
 }
