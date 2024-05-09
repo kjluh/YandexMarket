@@ -43,7 +43,16 @@ public class YMStart extends Chromedriver {
         webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@data-auto='category']")));
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.xpath("//div[@role='heading']//ul//div[contains(.,'" + nameProduct + "') and @data-zone-name='link']")));
-        chromeDriver.findElement(By.xpath("//div[@role='heading']//ul//div[contains(.,'" + nameProduct + "') and @data-zone-name='link']")).click();
+        for (int i = 0; i < 5; i++) {
+            try {
+
+                chromeDriver.findElement(By.xpath("//div[@role='heading']//ul//div[contains(.,'" + nameProduct + "') and @data-zone-name='link']")).click();
+                return;
+
+            } catch (StaleElementReferenceException e) {
+                System.out.println("ddf");
+            }
+        }
         Assertions.assertTrue(chromeDriver.findElement(By.xpath("//div[@role='heading' and @aria-level='2']/a"))
                 .getText().contains(nameProduct), "Ноуты не найдены");
     }

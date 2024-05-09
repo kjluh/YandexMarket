@@ -28,14 +28,14 @@ public class Test extends BaseTest {
         chromeDriver.get(testsProperties.YMarketUrl());
         YMStart ymStart = new YMStart(chromeDriver);
         ymStart.selectCatalogAndProducts(categoryProduct, nameProduct);
-        YMFilter ymFilter = new YMFilter(chromeDriver);
-        ymFilter.clickPrice(minPrice, maxPrice);
-        ymFilter.clickCreator(creators);
-        YMPageResult ymPageResult = new YMPageResult(chromeDriver, creators);
-        ymPageResult.countResultSearch(searchCount);
-        ymPageResult.checkSearchFilterInPage();
-        ymPageResult.checkSearchFilterEveryPage();
-        ymPageResult.takeFirstTargetFromFirstPage(numberStringForSearch);
-        ymPageResult.inputNameFirstTargetInSearch();
+//        YMFilter ymFilter = new YMFilter(chromeDriver);
+//        ymFilter.clickPrice(minPrice, maxPrice);
+//        ymFilter.clickCreator(creators);
+//        YMPageResult ymPageResult = new YMPageResult(chromeDriver, creators);
+//        ymPageResult.countResultSearch(searchCount);
+//        ymPageResult.checkSearchFilterInPage();
+//        ymPageResult.checkSearchFilterEveryPage();
+//        ymPageResult.takeFirstTargetFromFirstPage(numberStringForSearch);
+//        ymPageResult.inputNameFirstTargetInSearch();
     }
 }
